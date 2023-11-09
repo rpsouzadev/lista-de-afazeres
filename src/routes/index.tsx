@@ -1,22 +1,17 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
+
 import { Home } from '../pages/home'
 import { Login } from '../pages/login'
+import { DefaultLayout } from '../layouts/DefaultLayout'
 
-export const router = createBrowserRouter([
-  {
-    children: [
-      {
-        path: '/',
-        element: <Home />,
-      },
-      {
-        path: '/login',
-        element: <Login />,
-      },
-      {
-        path: '*',
-        element: <Navigate to="/login" />,
-      },
-    ],
-  },
-])
+export function Router() {
+  return (
+    <Routes>
+      <Route path="/" element={<DefaultLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Navigate to="/login" />} />
+      </Route>
+    </Routes>
+  )
+}
