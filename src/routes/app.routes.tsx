@@ -11,7 +11,7 @@ export function AppRoutes() {
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/nova-tarefa" element={<NewTask />} />
-        <Route path="/editar-tarefa:taskId" element={<EditTask />} />
+        <Route path="/editar-tarefa/:id" element={<EditTask />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>

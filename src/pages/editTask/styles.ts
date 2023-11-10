@@ -13,13 +13,13 @@ export const Container = styled.section`
 `
 export const Content = styled.section`
   width: 100%;
-  max-width: 70rem;
-  padding: 1rem;
+  max-width: 50rem;
+  padding: 2rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin: auto;
+  margin-top: 2rem;
   border-radius: 6px;
   background-color: ${({ theme }) => theme.colors.gray[600]};
 `

@@ -4,9 +4,14 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { useDispatch } from 'react-redux'
+
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 import { TextArea } from '../../components/TextArea'
+import { TaskData } from '../../redux/type'
+import { addTask } from '../../redux/taskSlice'
+import { useNavigate } from 'react-router-dom'
 
 export const formTaskSchema = z.object({
   title: z.string().min(1, 'obrigatório.'),
@@ -24,8 +29,21 @@ export function NewTask() {
     resolver: zodResolver(formTaskSchema),
   })
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   function handleSaveTask({ title, description }: FormData) {
-    console.log(title, description)
+    try {
+      const task: TaskData = {
+        id: Date.now().toString(),
+        title,
+        description,
+      }
+
+      dispatch(addTask(task))
+
+      navigate('/')
+    } catch (error) {}
   }
 
   return (
