@@ -4,6 +4,7 @@ export const Container = styled.section`
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 2rem;
 
   h1 {
     font-size: 2rem;
