@@ -1,21 +1,18 @@
-import { Route, Routes, Navigate } from 'react-router-dom'
-
-import { Home } from '../pages/Home'
+import { BrowserRouter } from 'react-router-dom'
+import { AppRoutes } from './app.routes'
+import { useAuth } from '../contexts/authContext'
 import { Login } from '../pages/login'
-import { NewTask } from '../pages/NewTask'
-import { EditTask } from '../pages/editTask'
-import { DefaultLayout } from '../layouts/DefaultLayout'
 
-export function Router() {
+export function Routes() {
+  const { isAuthenticated } = useAuth()
+
+  if (!isAuthenticated) {
+    return <Login />
+  }
+
   return (
-    <Routes>
-      <Route path="/" element={<DefaultLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/nova-tarefa" element={<NewTask />} />
-        <Route path="/editar-tarefa:taskId" element={<EditTask />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<Navigate to="/login" />} />
-      </Route>
-    </Routes>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   )
 }

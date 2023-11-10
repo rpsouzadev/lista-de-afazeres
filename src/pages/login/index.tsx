@@ -1,4 +1,5 @@
 import * as S from './styles'
+import { useAuth } from '../../contexts/authContext'
 
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
@@ -26,28 +27,34 @@ export function Login() {
     resolver: zodResolver(formSignInSchema),
   })
 
+  const { login } = useAuth()
+
   function handleSignIn({ email, password }: SignInFormData) {
-    console.log(email, password)
+    login(email, password)
   }
 
   return (
     <S.Container>
-      <S.Form onSubmit={handleSubmit(handleSignIn)}>
-        <Input
-          label="Email"
-          {...register('email')}
-          errorMessage={errors.email?.message}
-        />
+      <S.Content>
+        <h1>Fazer Login</h1>
 
-        <Input
-          label="Senha"
-          type="password"
-          {...register('password')}
-          errorMessage={errors.password?.message}
-        />
+        <S.Form onSubmit={handleSubmit(handleSignIn)}>
+          <Input
+            label="Email"
+            {...register('email')}
+            errorMessage={errors.email?.message}
+          />
 
-        <Button title="Entrar" />
-      </S.Form>
+          <Input
+            label="Senha"
+            type="password"
+            {...register('password')}
+            errorMessage={errors.password?.message}
+          />
+
+          <Button title="Entrar" />
+        </S.Form>
+      </S.Content>
     </S.Container>
   )
 }

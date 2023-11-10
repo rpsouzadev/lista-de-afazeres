@@ -7,9 +7,21 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  div {
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     width: 100%;
-    max-width: 120px;
+    max-width: 10rem;
+
+    a {
+      text-decoration: none;
+      color: ${({ theme }) => theme.colors.gray[100]};
+
+      :hover {
+        color: ${({ theme }) => theme.colors.gray[300]};
+      }
+    }
   }
 `
 export const Content = styled.form`

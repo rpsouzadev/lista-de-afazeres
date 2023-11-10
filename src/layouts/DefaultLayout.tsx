@@ -1,11 +1,15 @@
 import { Outlet } from 'react-router-dom'
 import { Header } from '../components/Header'
 
+import * as S from './styles'
+
 export function DefaultLayout() {
   return (
-    <div>
+    <S.Container>
       <Header isLogged={false} />
-      <Outlet />
-    </div>
+      <S.Content>
+        <Outlet />
+      </S.Content>
+    </S.Container>
   )
 }

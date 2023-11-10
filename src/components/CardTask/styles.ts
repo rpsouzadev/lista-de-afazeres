@@ -5,11 +5,12 @@ export const Container = styled.div`
   max-width: 25rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 2rem;
   padding: 0.5rem;
   border-radius: 6px;
   border: 1px solid ${({ theme }) => theme.colors.gray[100]};
+  background-color: ${({ theme }) => theme.colors.gray[800]};
 `
 export const Content = styled.div`
   display: flex;

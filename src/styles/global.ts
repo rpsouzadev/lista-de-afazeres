@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.colors.gray[300]};
     -webkit-font-smoothing: antialiased;
   }
-  body, input, textarea, button {
+  body, input, textarea, button, a {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 1rem;

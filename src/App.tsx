@@ -1,18 +1,17 @@
-import { BrowserRouter } from 'react-router-dom'
-
-import { ThemeProvider } from 'styled-components'
-import { defaultThemes } from './theme/default'
+import { Routes } from './routes'
 import { GlobalStyle } from './styles/global'
-import { Router } from './routes'
+import { defaultThemes } from './theme/default'
+import { ThemeProvider } from 'styled-components'
+import { AuthContextProvider } from './contexts/authContext'
 
 export function App() {
   return (
     <>
       <ThemeProvider theme={defaultThemes}>
         <GlobalStyle />
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
+        <AuthContextProvider>
+          <Routes />
+        </AuthContextProvider>
       </ThemeProvider>
     </>
   )

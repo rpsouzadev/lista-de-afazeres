@@ -1,16 +1,23 @@
-import { Button } from '../Button'
 import * as S from './styles'
 
-type HeaderProps = {
-  isLogged: boolean
-}
+import { useAuth } from '../../contexts/authContext'
 
-export function Header({ isLogged = false }: HeaderProps) {
+import { Button } from '../Button'
+
+export function Header() {
+  const { logOut } = useAuth()
+
   return (
     <S.Container>
       <S.Title>Lista de afazeres</S.Title>
 
-      <div>{isLogged && <Button title="Sair" />}</div>
+      <nav>
+        <a href="/">Home</a>
+
+        <a href="/nova-tarefa">Criar</a>
+
+        <Button title="Sair" onClick={logOut} />
+      </nav>
     </S.Container>
   )
 }
